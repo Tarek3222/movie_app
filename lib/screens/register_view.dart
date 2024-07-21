@@ -24,6 +24,8 @@ class _RegisterViewState extends State<RegisterView> {
 
   GlobalKey<FormState> formKey=GlobalKey();
 
+  AutovalidateMode autovalidateMode=AutovalidateMode.disabled;
+
   bool isLoading = false;
   bool isObscure = true;
 
@@ -49,6 +51,7 @@ class _RegisterViewState extends State<RegisterView> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Form(
+              autovalidateMode: autovalidateMode,
               key: formKey,
               child: ListView(
                 children: [
@@ -147,6 +150,9 @@ class _RegisterViewState extends State<RegisterView> {
                         setState(() {
                           isLoading = false;
                         });
+                      }else{
+                        autovalidateMode=AutovalidateMode.always;
+                        setState(() {});
                       }
                     },
                     text: 'Register',

@@ -20,7 +20,7 @@ class SignInView extends StatefulWidget {
 class _SignInViewState extends State<SignInView> {
   String? email, password;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool isLoading = false;
   bool isObscure = true;
 
@@ -47,6 +47,7 @@ class _SignInViewState extends State<SignInView> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Form(
               key: formKey,
+              autovalidateMode: autovalidateMode,
               child: ListView(
                 children: [
                   const Center(
@@ -142,6 +143,11 @@ class _SignInViewState extends State<SignInView> {
                           setState(() {
                           isLoading = false;
                         });
+                        }else{
+                          autovalidateMode = AutovalidateMode.always;
+                          setState(() {
+                            
+                          });
                         }
                     },
                     text: 'Sign In',
